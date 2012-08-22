@@ -1,27 +1,53 @@
 #!/bin/bash -e
 
+#!/bin/bash
+
+#/ NAME
+#/     provision.sh -- vagrant shell provisioner for zendesk definition
+#/
+#/ SYNOPSIS
+#/     
+#/     ./provision.sh
+#/
+
 umask 022
 
-export DEBIAN_FRONTEND=noninteractive
+# figure out the project root under which bin, lib live
+shome="/vagrant"
+cd $shome
 
-# update packages
-aptitude update
-aptitude safe-upgrade -q -y
+# load a jason bourne library
+source "$shome/bin/_treadstone"
 
-# install ruby
-aptitude install -y ruby rubygems ruby-dev libopenssl-ruby
+  # entry point
+  function main {
+  export DEBIAN_FRONTEND=noninteractive
 
-gem install rubygems-update
-cd /var/lib/gems/1.8/gems/rubygems-update-*
-ruby setup.rb
-gem install bundler
+  # update packages
+  aptitude update
+  aptitude safe-upgrade -q -y
 
-# install git for microwave
-aptitude install -y git-core
+  # install ruby
+  aptitude install -y ruby rubygems ruby-dev libopenssl-ruby
 
-# aptitude cleanup
-aptitude clean
+  gem install rubygems-update
+  cd /var/lib/gems/1.8/gems/rubygems-update-*
+  ruby setup.rb
+  gem install bundler
 
-# microwave
-cd /vagrant
-bin/microwave
+  # aptitude cleanup
+  aptitude clean
+
+  # microwave
+  bin/microwave
+}
+
+# define command line options:
+#   var name, default, description, short option
+
+# parse the command-line
+parse_command_line "$@" || exit $?
+eval set -- "${FLAGS_ARGV}"
+
+# pass arguments to entry point
+main "$@"
