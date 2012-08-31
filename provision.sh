@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -feux
 
 #/ NAME
 #/     provision.sh -- vagrant shell provisioner for zendesk definition
