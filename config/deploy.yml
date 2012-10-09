@@ -1,6 +1,6 @@
 --- 
-repository: https://github.com/destructuring/definition-XXX
-application: XXX
+repository: https://github.com/destructuring/definition-generic
+application: generic
 
 user: nobody
 group: nobody
