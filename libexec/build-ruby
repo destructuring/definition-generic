@@ -16,10 +16,6 @@ source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
-  if [[ ! -f "$shome/Gemfile" ]]; then
-    exit 0
-  fi
-
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
