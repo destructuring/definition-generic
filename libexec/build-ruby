@@ -20,9 +20,8 @@ function main {
     exit 0
   fi
 
-  if ! bundle check 2>&1 > /dev/null; then
-    bundle install --quiet --local "$@"
-    bundle check > /dev/null
+  if ! bundle check; then
+    bundle install --local --path vendor/bundle "$@"
   fi
 }
 
