@@ -16,7 +16,7 @@ source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
-  env > meh
+  unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPTS
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
