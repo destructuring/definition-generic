@@ -14,7 +14,7 @@ namespace :ubuntu do
   end
 
   task :restart do
-    run "cd #{deploy_to} && #{ruby_loader} bin/restart vagrant"
+    run "cd #{deploy_to} && bin/restart vagrant"
   end
 
   task :hack do
@@ -26,7 +26,7 @@ end
 
 namespace :deploy do
   task :bundle do
-    run "cd #{deploy_release} && #{ruby_loader} bin/build ruby"
+    run "cd #{deploy_release} && bin/build ruby"
   end
 end
 
