@@ -18,7 +18,7 @@ source "$shome/libexec/_treadstone"
 function main {
   exec 1>&2
   set -x
-  unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPTS
+  unset GEM_HOME GEM_PATH RUBYOPT
   env | sort
   which ruby
   which gem
