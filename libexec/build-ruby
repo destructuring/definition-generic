@@ -16,18 +16,9 @@ source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
-  exec 1>&2
-  set -x
-  unset GEM_HOME GEM_PATH RUBYOPT
-  env | sort
-  which ruby
-  which gem
-  which bundle
-  pwd
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
-  set +x
 }
 
 require sub "$BASH_SOURCE" "$@"
