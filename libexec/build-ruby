@@ -16,10 +16,12 @@ source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
+  set -x
   unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPTS
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
+  set +x
 }
 
 require sub "$BASH_SOURCE" "$@"
