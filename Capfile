@@ -31,8 +31,8 @@ end
 
 # hooks into alpha_omega deploy
 after "deploy:localdomain", "ubuntu:overrides"
-before "deploy::scm", "ubuntu:hack"
-after "deploy::scm", "deploy:bootstrap_code"
+before "deploy:scm", "ubuntu:hack"
+after "deploy:scm", "deploy:bootstrap_code"
 after "deploy:restart", "ubuntu:restart"
 
 # interesting hosts
