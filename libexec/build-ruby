@@ -18,6 +18,10 @@ source "$shome/libexec/_treadstone"
 function main {
   set -x
   unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPTS
+  env | sort
+  which ruby
+  which gem
+  which bundle
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
