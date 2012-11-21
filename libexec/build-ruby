@@ -16,6 +16,7 @@ source "$shome/libexec/_treadstone"
 
 # entry point
 function main {
+  exec 1>&2
   set -x
   unset BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPTS
   env | sort
