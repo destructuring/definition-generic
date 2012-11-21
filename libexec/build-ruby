@@ -23,6 +23,7 @@ function main {
   which ruby
   which gem
   which bundle
+  pwd
   if ! bundle check; then
     bundle install --local --path vendor/bundle "$@"
   fi
